@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}User Page{% endblock %}
+
+
+{% block header %}
+    <h4>Hello {{username}}</h4>
+{% endblock %}
+
+{% block section %}
+    <button  class = "active" id="btn1" >Home</button><br>
+    <button id = "btn2">Profile</button><br>
+    <button id = "btn3">Points</button><br>
+    <button id = "btn4">Tasks</button><br>
+    <button id = "btn5">Logout</button>
+{% endblock %}
+
+{% block content %}
+   
+    {% csrf_token %}
+
+    {% for i in appsdata.each %}
+        {% for a,b in i.val.items %}
+        <form method="post" action="">
+
+        </form>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src={{b.icon}} class="logo3" alt="...">
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">{{a}}</h5>
+                        <a href = "appdetail/{{a}}">View In Detail</a>
+                    </div>
+                </div>
+
+                <div class = "col-md-4">
+                    <button class = "homebtn mt-5">{{b.points}}</button>
+                </div>
+                
+            </div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+
+    
+
+   <script type="text/javascript">
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+    const btn3 = document.getElementById("btn3");
+    const btn4 = document.getElementById("btn4");
+    const btn5 = document.getElementById("btn5");
+
+    btn1.addEventListener("click", () => {
+        window.location.replace('http://127.0.0.1:8000/user/home')
+    })
+
+    btn2.addEventListener("click", () => {
+        console.log("clicked")
+        window.location.replace('http://127.0.0.1:8000/user/profile')
+    })
+    btn3.addEventListener("click", () => {
+        console.log("clicked")
+        window.location.replace('http://127.0.0.1:8000/user/points')
+    })
+
+    btn4.addEventListener("click", () => {
+        console.log("clicked")
+        window.location.replace('http://127.0.0.1:8000/user/tasks')
+    })
+
+    btn5.addEventListener("click", () => {
+        console.log("clicked")
+        window.location.replace('http://127.0.0.1:8000/user/logout')
+    })
+</script>
+{% endblock %}
+
+

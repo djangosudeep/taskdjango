@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0px;
+    }
+    .main{
+        text-align: center;
+        background: rgb(216, 216, 216)
+    }
+    button{
+        background-color: white;
+        color: slateblue;
+        width: 150px;
+        height: 50px;
+        margin: 10px 10px;
+        border: 0px solid black;
+    }
+    .active{
+        background-color: slateblue;
+        color: white;
+    }
+    .homebtn{
+        background-color: rgb(90, 205, 105);
+        color: white;
+    }
+    .body{
+        display: flex;
+        width: 100%;
+    }
+    .header{
+        height:5vh;
+        background-color:white;
+        width:100%;
+        margin-bottom: 40px;
+    }
+    .header h1{
+        margin: auto;
+    }
+    .leftpart{
+        padding-top:20px;
+        height:80vh;
+        width: 30%;
+        margin-right: 30px;
+    }
+    .rightpart{
+        height:80vh;
+        width: 70%;
+        background-color:white;
+    }
+    .logo{
+        width: 200px;height: 200px;
+    }
+
+    .logo2{
+        width: 150px;height: 150px;
+        margin:10px 10px;
+    }
+
+    .logo3{
+        width: 100px;height: 100px;
+        margin:10px 10px;
+    }
+    .points{
+        width: 150px;height: 50px; background-color:rgb(233, 233, 145);border:0px solid black;
+    }
+    #formdata{
+        width: 200px;
+    }
+    .card{
+        background-color:rgb(216, 216, 216);
+        margin:auto;
+        margin-top:30px;
+    }
+    span{
+        font-weight: bold;
+    }
+    .profile{
+        margin-top: 5%;
+    }
+</style>
+<body>
+    <div class = "main">
+        <div class = "header">
+            {% block header %}{% endblock %}
+        </div>
+       <div class ="body">
+           <div class = "leftpart">
+                {% block section %}{% endblock %}
+           </div>
+           <div class = "rightpart">
+                {% block content %}{% endblock %}
+           </div>
+       </div>
+    </div>
+</body>
+</html>

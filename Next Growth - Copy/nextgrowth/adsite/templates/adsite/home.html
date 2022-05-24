@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Page{% endblock %}
+
+
+{% block header %}
+    <h4>Hello Admin</h4>
+{% endblock %}
+
+{% block section %}
+    <button id= "btn1">Home</button><br>
+    <button  class = "active" id = "btn2">+Add Apps</button>
+{% endblock %}
+
+{% block content %}
+    {% if data %}
+    <img class="logo2"  src = "{{data.icon}}" alt = "example img">
+    <form method = "POST" id="myform" action = "/">
+        {% csrf_token %}
+        
+        <input id="formdata" type ="text" name ="appname" value = {{data.appname}} placeholder = "Enter App Name" required>
+        <input  id="formdata" type ="text" name ="applink" value={{data.applink}} id = "applink" required><br><br>
+        <input type="hidden" name="icon" value="{{data.icon}}">
+        <input type="hidden" name="website" value="{{data.website}}">
+        
+        <label>App Category</label>
+
+        <select  id="formdata" name = "cat">
+            <option value = "{{data.category}}">{{data.category}}</option>
+        </select>  
+        <br>
+        <br>
+        <input type="text" class = "points" placeholder = "ENTER POINTS" name="points" required><br>
+        <button class = "active">SUBMIT</button>
+
+    </form>
+
+        {% else %}
+
+        <img class="logo"  src = "https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" alt = "example img">
+
+        <form method = "POST" id="myform" action = "">
+            {% csrf_token %}
+
+        
+
+        <input type ="text" name ="appname" placeholder = "Enter App Name" required>
+        <input type ="text" name ="applink" id = "applink" placeholder = "App Link" required><br><br>
+       <label>App Category</label>
+        <select name = "cat">
+            <option value = "App Category">App Category</option>
+        </select>   
+        <br>
+        <br>
+        <button class = "active">App points</button>
+    </form>
+    {% endif %}
+
+
+    <script type="text/javascript">
+        const link = document.getElementById("applink");
+        const myform = document.getElementById("myform")
+        link.addEventListener("keyup",(e)=>{
+            e.preventDefault();
+            myform.submit();
+        })
+
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+
+    btn1.addEventListener("click", () => {
+        window.location.replace('http://127.0.0.1:8000/')
+    })
+
+    btn2.addEventListener("click", () => {
+        window.location.replace('http://127.0.0.1:8000/submit')
+    })
+
+    </script>
+{% endblock %}
